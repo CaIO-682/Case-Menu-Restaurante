@@ -1,0 +1,386 @@
+/* Reset e configurações básicas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Container padrão */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  background: #d32f2f;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  transition: background 0.3s;
+}
+.nav-links li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Botão do menu (mobile) */
+.menu-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  display: none;
+  cursor: pointer;
+}
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  position: relative;
+}
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  left: 0;
+}
+.hamburger::before {
+  top: -8px;
+}
+.hamburger::after {
+  top: 8px;
+}
+
+/* Dropdown menu para mobile */
+.dropdown-menu {
+  display: none;
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 200px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.dropdown-menu.active {
+  display: block;
+}
+.dropdown-menu ul {
+  list-style: none;
+}
+.dropdown-menu li a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+.dropdown-menu li a:hover {
+  background: #f4f4f4;
+}
+
+/* Espaço para o conteúdo principal (navbar fixa) */
+main {
+  margin-top: 80px;
+}
+
+/* Títulos das seções */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #d32f2f;
+}
+
+/* Carrossel (Destaques) */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.slide {
+  min-width: 100%;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+@media (min-width: 769px) {
+  .slide {
+    min-width: calc((100% - 40px) / 3);
+    margin-right: 20px;
+  }
+}
+/* Imagens do carrossel com altura fixa (alterado de 200px para 300px) */
+.slide img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Botões do carrossel */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 50%;
+}
+.carousel .prev {
+  left: 10px;
+}
+.carousel .next {
+  right: 10px;
+}
+
+/* Grid para itens do menu – Layout horizontal */
+.section-menu .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .section-menu .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-menu .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  min-height: 180px;
+}
+.section-menu .item:hover {
+  transform: translateY(-5px);
+}
+
+/* Área de detalhes */
+.item .details {
+  flex: 1;
+  padding: 15px;
+}
+.item .details h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+.item .details p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.item .details .price {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+/* Área da imagem */
+.item .image {
+  width: 150px;
+  height: 150px;
+  margin: 0 15px;
+  border-left: 1px solid #ddd;
+  overflow: hidden;
+}
+.item .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+.item:hover .image img {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Responsividade para Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .menu-btn {
+    display: block;
+  }
+}
+
+/* ======================
+   Estilos do Modal
+   ====================== */
+   .modal {
+    display: none; /* escondido por padrão */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content ul {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+  }
+  
+  .modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* ======================
+     Estilos do Footer
+     ====================== */
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  
+  .footer-logo, .footer-links, .footer-social {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .footer-links h4, .footer-social h4 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul, .footer-social ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li, .footer-social li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-links a, .footer-social a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-social img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid #444;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+  
+  /* ======================
+     Botão de Pedido no Navbar
+     ====================== */
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .order-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .order-btn img {
+    width: 24px;
+    height: 24px;
+  }
+  
